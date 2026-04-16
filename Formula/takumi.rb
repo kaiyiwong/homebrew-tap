@@ -1,8 +1,8 @@
 class Takumi < Formula
   desc "The craftsman's toolkit for shaping video assets"
   homepage "https://github.com/kaiyiwong/takumi"
-  url "https://github.com/kaiyiwong/takumi/archive/refs/tags/v1.2.3.tar.gz"
-  sha256 "0282b706db4f3b0f8f095e4fce4a6786bb9193034ea1a75a302efd003901477b"
+  url "https://github.com/kaiyiwong/takumi/archive/refs/tags/v1.2.4.tar.gz"
+  sha256 "7ce7c92f527762a59cc00452f15165885e987f3dc61253cc5e034ad4ec5e574c"
   license "MIT"
 
   depends_on "ffmpeg"
@@ -11,6 +11,7 @@ class Takumi < Formula
   def install
     libexec.install "takumi.sh"
     libexec.install "commands"
+    libexec.install "lib"
     libexec.install "ui"
     libexec.install "mcp"
 
