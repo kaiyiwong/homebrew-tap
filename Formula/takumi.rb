@@ -1,8 +1,8 @@
 class Takumi < Formula
   desc "The craftsman's toolkit for shaping video assets"
   homepage "https://github.com/kaiyiwong/takumi"
-  url "https://github.com/kaiyiwong/takumi/archive/refs/tags/v1.3.0.tar.gz"
-  sha256 "e2fb78c059984f0e92cce3d84d52be951b1f3d9fb8196842f8e4c5ea434d6a0b"
+  url "https://github.com/kaiyiwong/takumi/archive/refs/tags/v1.3.1.tar.gz"
+  sha256 "1dd47176060c9072092fa258f049e3ae83063b23d1c7a841389b76a3803f1f94"
   license "MIT"
 
   depends_on "ffmpeg"
