@@ -1,8 +1,8 @@
 class Takumi < Formula
   desc "The craftsman's toolkit for shaping video assets"
   homepage "https://github.com/kaiyiwong/takumi"
-  url "https://github.com/kaiyiwong/takumi/archive/refs/tags/v1.2.7.tar.gz"
-  sha256 "f3ac07c8f87daa8311d1814570863543189a85fb7f093cefb341760d407adcbe"
+  url "https://github.com/kaiyiwong/takumi/archive/refs/tags/v1.2.8.tar.gz"
+  sha256 "ae207981662455090020bcd9bf5b208c90f4d24e4b41fa6293772de6f08d31ed"
   license "MIT"
 
   depends_on "ffmpeg"
@@ -22,7 +22,11 @@ class Takumi < Formula
       exec "#{libexec}/takumi.sh" "$@"
     EOS
 
-    bin.install libexec/"bin/takumi-mcp"
+    (bin/"takumi-mcp").write <<~EOS
+      #!/bin/bash
+      export SCRIPT_DIR="#{libexec}"
+      exec "#{libexec}/bin/takumi-mcp"
+    EOS
   end
 
   def post_install
