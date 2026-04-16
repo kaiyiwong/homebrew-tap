@@ -1,16 +1,29 @@
 class Takumi < Formula
   desc "The craftsman's toolkit for shaping video assets"
   homepage "https://github.com/kaiyiwong/takumi"
-  url "https://github.com/kaiyiwong/takumi/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "05a84c63f234a5f4fe87a700bbf922aa1b7094271359912b286de67e079cdd7e"
+  url "https://github.com/kaiyiwong/takumi/archive/refs/tags/v1.1.0.tar.gz"
+  sha256 "dc5ba4a07131294be2c99e48547ea33bf5e7a27a63db3a3f79a58453897bbfa6"
   license "MIT"
 
   depends_on "ffmpeg"
+  depends_on "node"
 
   def install
     libexec.install "takumi.sh"
     libexec.install "commands"
-    bin.install_symlink libexec/"takumi.sh" => "takumi"
+    libexec.install "ui"
+    libexec.install "mcp"
+
+    (bin/"takumi").write <<~EOS
+      #!/bin/bash
+      export SCRIPT_DIR="#{libexec}"
+      exec "#{libexec}/takumi.sh" "$@"
+    EOS
+  end
+
+  def post_install
+    system "npm", "install", "--prefix", libexec/"mcp", "--silent"
+    system "npm", "install", "--prefix", libexec/"ui", "--silent"
   end
 
   test do
